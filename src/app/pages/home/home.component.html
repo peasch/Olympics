@@ -10,10 +10,12 @@
   </div>
 <hr />
 <p>{{ (olympics$ | async)?.length }} data loaded</p>
+<p *ngFor="let olympic of olympics$ | async">{{olympic.country}} </p>
+
+
+  <button pButton pRipple label="New" icon="pi pi-plus" class="p-button mr-2" ></button>
+  <div class="card flex justify-content-center">
+    <p-chart type="pie" [data]="data" [options]="options" />
+  </div>
 </section>
-<section>
-  <app-pie-chart />
 
-
-
-</section>
