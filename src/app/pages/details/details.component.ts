@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import { ChartModule } from 'primeng/chart';
+import {OlympicService} from "../../core/services/olympic.service";
 
 @Component({
   selector: 'app-details',
@@ -15,6 +16,9 @@ export class DetailsComponent implements OnInit{
   data: any;
 
   options: any;
+  constructor(private olympicService: OlympicService,
+              private router:Router) {
+  }
 
   ngOnInit() {
     const documentStyle = getComputedStyle(document.documentElement);
@@ -26,18 +30,24 @@ export class DetailsComponent implements OnInit{
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       datasets: [
         {
-          label: 'First Dataset',
+          label: 'Number of entries',
           data: [65, 59, 80, 81, 56, 55, 40],
           fill: false,
           borderColor: documentStyle.getPropertyValue('--blue-500'),
-          tension: 0.4
+          tension: 0.2
         },
         {
-          label: 'Second Dataset',
+          label: 'Total number medals',
           data: [28, 48, 40, 19, 86, 27, 90],
           fill: false,
           borderColor: documentStyle.getPropertyValue('--pink-500'),
-          tension: 0.4
+          tension: 0.2
+        },{
+          label: 'Total number of athlets',
+          data: [10, 12, 50, 3, 125, 89, 37],
+          fill: false,
+          borderColor: '#956065',
+          tension: 0.2
         }
       ]
     };
@@ -73,5 +83,8 @@ export class DetailsComponent implements OnInit{
         }
       }
     };
+  }
+  navigateToHome(){
+    this.router.navigateByUrl('home');
   }
 }

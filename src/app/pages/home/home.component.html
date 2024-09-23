@@ -1,7 +1,4 @@
-<section></section>
-
-<section id="home2">
-  <div class="container-fluid">
+ <div class="container-fluid">
     <div class="row" style="margin-top: 50px">
       <div class="d-inline col-sm-3 offset-2" style="font-size: 1.5em">
         <h2>Olympic games app</h2>
@@ -14,6 +11,7 @@
       <p>Medals per country</p>
     </div>
   </div>
+  <span type="button" class="button" (click)="navigateToCountry()">Détails</span>
   <div class="row" style="margin-top: 50px">
     <div class="d-inline col-sm-3" >
       <div><p>number of JO's</p></div>
@@ -23,8 +21,10 @@
         <span>{{ (olympics$ | async)?.length }}</span></div>
     </div>
   </div>
-  <div class="card flex justify-content-center">
-    <p-chart type="pie" [data]="data" [options]="options"/>
-  </div>
-</section>
+
+<div class="card" >
+  <p-chart type="pie" [data]="data" [options]="options" style="width:10rem"/>
+</div>
+
+
 
