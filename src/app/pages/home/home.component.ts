@@ -21,24 +21,15 @@ export class HomeComponent implements OnInit {
   data: any;
   options: any;
 
+
   constructor(private olympicService: OlympicService,
               private router:Router) {
   }
 /* couleurs des pays
-italy :#956065
-germany:#793D52
-spain:#B8CBE7
-United Kingdom:#BFE0F1
-United States:#89A1DB
-France:#9780A1
+
  */
   ngOnInit(): void {
     this.olympics$ = this.olympicService.getOlympics();
-    this.olympicService.getOlympics().subscribe( res =>{
-        this.olympics=res;
-        console.log(this.olympics);
-    }
-    );
 
     this.setData();
 
@@ -46,22 +37,30 @@ France:#9780A1
   }
 
   setData(): void {
+    const italy = '#956065';
+    const germany = '#793D52';
+    const spain = '#B8CBE7';
+    const United_States = '#89A1DB';
+    const France = '#9780A1';
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
-    const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
-    const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
 
-    this.data = {
+    this.olympicService.getOlympics().subscribe((response: Olympic[]) =>{
+      const labels = response.map(olympic => olympic.country);
+      this.data = {
 
-      labels: ['Italy', 'Spain', 'United States','Germany', 'France'],
-      datasets: [
-        {
-          data: [540, 325, 702, 125, 456],
-          backgroundColor: ['#956065','#B8CBE7', '#89A1DB','#793d52','#9780A1'],
-          hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
-        }
-      ]
-    }
+        labels: labels,
+        datasets: [
+          {
+            data: [540, 325, 702, 125, 456],
+            backgroundColor: ['#956065','#B8CBE7', '#89A1DB','#793d52','#9780A1'],
+            hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
+          }
+        ]
+      }
+
+    });
+
     this.options = {
       maintainAspectRatio: false,
       aspectRatio: 0.5,
