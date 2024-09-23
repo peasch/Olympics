@@ -8,14 +8,23 @@
       </div>
     </div>
   </div>
-<hr />
-<p>{{ (olympics$ | async)?.length }} data loaded</p>
-<p *ngFor="let olympic of olympics$ | async">{{olympic.country}} </p>
-
-
-  <button pButton pRipple label="New" icon="pi pi-plus" class="p-button mr-2" ></button>
+  <hr/>
+  <div class="row" style="margin-top: 50px">
+    <div>
+      <p>Medals per country</p>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 50px">
+    <div class="d-inline col-sm-3" >
+      <div><p>number of JO's</p></div>
+    </div>
+    <div class="d-inline col-sm-3" style="margin-top: 50px">
+      <div><span>Number of countries </span>
+        <span>{{ (olympics$ | async)?.length }}</span></div>
+    </div>
+  </div>
   <div class="card flex justify-content-center">
-    <p-chart type="pie" [data]="data" [options]="options" />
+    <p-chart type="pie" [data]="data" [options]="options"/>
   </div>
 </section>
 
