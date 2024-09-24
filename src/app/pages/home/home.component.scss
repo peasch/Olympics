@@ -1,25 +1,28 @@
 
-#home2{
+#home2 {
 
   padding: 30px;
   display: block;
 }
-.intersection{
-  background:linear-gradient(180deg, #ff7423,white);
-  height:15px;
+
+.intersection {
+  background: linear-gradient(180deg, #ff7423, white);
+  height: 15px;
 }
+
 .button {
   padding: 10px;
-  margin:10px 4px;
+  margin: 10px 4px;
   color: #ff7423;
   font-family: sans-serif;
   text-align: center;
   position: relative;
   text-decoration: none;
-  display:inline-block;
-  border:1px solid ;
+  display: inline-block;
+  border: 1px solid;
 }
-.button::before{
+
+.button::before {
   content: "";
   position: absolute;
   top: 0;
@@ -32,14 +35,32 @@
   transform: scaleY(.1);
   transition: all .4s
 }
-.button:hover{
-  color:white;
+
+.button:hover {
+  color: white;
 }
-.button:hover::before{
+
+.button:hover::before {
   opacity: 1;
   background-color: #ff7423;
   -webkit-transform: scaleY(1);
   transform: scaleY(1);
   transition: -webkit-transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity .4s;
   transition: transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity
+}
+
+.rectangle {
+  color: white;
+  background-color: #04838F;
+  border: 5px #04838F;
+  border-radius: 5px;
+  padding: 10px;
+
+}
+.rectangle-empty {
+  color: #04838F;
+  border: 1px #04838F solid;
+  border-radius: 5px;
+  padding: 10px;
+
 }

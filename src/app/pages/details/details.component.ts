@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router, RouterLink} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import { ChartModule } from 'primeng/chart';
 import {OlympicService} from "../../core/services/olympic.service";
 
@@ -17,10 +17,16 @@ export class DetailsComponent implements OnInit{
 
   options: any;
   constructor(private olympicService: OlympicService,
-              private router:Router) {
+              private router:Router,
+              private route:ActivatedRoute) {
   }
 
   ngOnInit() {
+    const countryId = this.route.snapshot.params['id'];
+
+    this.setData();
+  }
+  setData():void{
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
     const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
@@ -84,7 +90,13 @@ export class DetailsComponent implements OnInit{
       }
     };
   }
+  getCountryById(id:number):void{
+
+  }
+
   navigateToHome(){
     this.router.navigateByUrl('home');
   }
+
+
 }

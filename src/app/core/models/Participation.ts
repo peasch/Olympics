@@ -1,4 +1,4 @@
-export interface Participations{
+export interface Participation {
   id: number;
   year: number;
    city: string;

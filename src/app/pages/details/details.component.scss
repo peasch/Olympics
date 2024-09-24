@@ -43,3 +43,11 @@
   transition: -webkit-transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity .4s;
   transition: transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity
 }
+.rectangle {
+  color: white;
+  background-color: #04838F;
+  border: 5px #04838F;
+  border-radius: 5px;
+  padding: 10px;
+
+}

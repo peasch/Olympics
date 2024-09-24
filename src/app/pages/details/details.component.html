@@ -1,7 +1,20 @@
-<p>Name of the country</p>
-
-
-<div class="card" >
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<div class="container">
+  <div class="row" style="margin: 50px; text-align: center;">
+    <div style="margin-top: 50px; text-align: center;">
+      <span class="rectangle">Name of the country</span></div>
+  </div>
+</div>
+<div>
   <p-chart type="line" [data]="data" [options]="options" style="width:10rem"/>
 </div>
-<span type="button" class="button" (click)="navigateToHome()">Dashboard</span>
+<div class="container">
+  <div class="row">
+    <div style="padding:10px; text-align: center;">
+    <span type="button" class="button" (click)="navigateToHome()">Dashboard</span>
+    </div>
+  </div>
+</div>
