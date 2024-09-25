@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, filter, Observable} from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import {Olympic} from "../models/Olympic";
+
 
 
 @Injectable({
@@ -30,4 +31,6 @@ export class OlympicService {
   getOlympics() :Observable<Olympic[]> {
     return this.olympics$;
   }
+
+
 }

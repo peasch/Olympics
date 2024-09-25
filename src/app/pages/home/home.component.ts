@@ -17,17 +17,13 @@ export class HomeComponent implements OnInit {
   olympic!: Olympic;
   data: any;
   options: any;
-  countryIds:number[]=[];
-
+  uniqueYears!: number[];
 
 
   constructor(private olympicService: OlympicService,
               private router: Router) {
   }
 
-  /* couleurs des pays
-
-   */
   ngOnInit(): void {
     this.olympics$ = this.olympicService.getOlympics();
 
@@ -36,6 +32,7 @@ export class HomeComponent implements OnInit {
   }
 
   setData(): void {
+    // Couleurs des pays dans le Pie Chart
     const ITALY = '#956065';
     const GERMANY = '#793D52';
     const SPAIN = '#B8CBE7';
@@ -45,10 +42,14 @@ export class HomeComponent implements OnInit {
     const textColor = documentStyle.getPropertyValue('--text-color');
 
     this.olympicService.getOlympics().subscribe((response: Olympic[]) => {
-
+      this.olympics = response;
       const labels = response?.map(olympic => olympic.country);
-      const datas = response?.map((olympic:Olympic) =>
+      const datas = response?.map((olympic: Olympic) =>
         olympic.participations.reduce((acc: number, participation: Participation) => acc + participation.medalsCount, 0));
+
+      this.uniqueYears = Array.from(new Set(
+        response?.map((olympic: Olympic) =>
+          olympic.participations.map((i: Participation) => i.year) ?? []).flat()));
 
       this.data = {
         labels: labels,
@@ -64,6 +65,7 @@ export class HomeComponent implements OnInit {
     });
 
     this.options = {
+
       maintainAspectRatio: false,
       aspectRatio: 0.5,
       plugins: {
@@ -81,14 +83,11 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl('detail');
   }
 
-  // Fonction appelée lorsque l'utilisateur clique sur un segment du PieChart
-  onChartClick(event: any) {
-    const elementIndex = event.element._index; // Récupérer l'index du segment cliqué
-    const countryId = this.countryIds[elementIndex];
-    // Récupérer l'ID du pays correspondant
+  onChartClick(e: any) {
+    const elementIndex = e.element.index;
+    const countryId = this.olympics[elementIndex].id;
     if (countryId) {
       this.router.navigateByUrl(`detail/${countryId}`);
-      console.log(`detail/${countryId}`)// Naviguer vers la page de détail
     }
 
   }

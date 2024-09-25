@@ -11,7 +11,7 @@
 .button {
   padding: 10px;
   margin:10px 4px;
-  color: #ff7423;
+  color: #04838F;
   font-family: sans-serif;
   text-align: center;
   position: relative;
@@ -37,7 +37,7 @@
 }
 .button:hover::before{
   opacity: 1;
-  background-color: #ff7423;
+  background-color: #04838F;
   -webkit-transform: scaleY(1);
   transform: scaleY(1);
   transition: -webkit-transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity .4s;
