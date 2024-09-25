@@ -1,0 +1,57 @@
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<div class="container">
+  <div class="row" style="margin: 50px; text-align: center;">
+    <div style=" text-align: center;">
+      <span class="rectangle">{{ this.olympic?.country }}</span></div>
+  </div>
+</div>
+<div class="container">
+  <div style="text-align: center">
+    <div class="row" style="align-content: space-around">
+      <div class="col-12 col-sm-4 col-lg-4" style="padding: 30px;">
+        <div style="border: 1px #04838F solid;border-radius: 5px;padding: 10px;">
+          <div>
+            <span>Number of Entries</span>
+          </div>
+          <div style="margin-top: 5px;">
+            <span style="font-weight: bold ">{{ this.numberOfEntries }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-4 col-lg-4" style="padding: 30px;">
+        <div style="border: 1px #04838F solid;border-radius: 5px;padding: 10px;">
+          <div>
+            <span>Number of Medals</span>
+          </div>
+          <div style="margin-top: 5px">
+            <span style="font-weight: bold ">{{ this.totalMedals }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-4 col-lg-4" style="padding: 30px;">
+        <div style="border: 1px #04838F solid;border-radius: 5px;padding: 10px;">
+          <div>
+            <span>Number of Athlets</span>
+          </div>
+          <div style="margin-top: 5px;">
+            <span style="font-weight: bold ">{{ this.totalAthlets }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="margin: 0 20%;">
+  <p-chart type="line" [data]="data" [options]="options" style="width:10rem"/>
+</div>
+<div class="container">
+  <div class="row">
+    <div style="padding:10px; text-align: center;">
+      <span type="button" class="button" (click)="navigateToHome()">Dashboard</span>
+    </div>
+  </div>
+</div>

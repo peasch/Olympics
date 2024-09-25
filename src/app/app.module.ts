@@ -5,16 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { ChartModule } from 'angular-highcharts';
-import {PieChartComponent} from "./pie-chart/pie-chart.component";
+import { ChartModule } from 'primeng/chart';
+import {ButtonDirective} from "primeng/button";
+import {Ripple} from "primeng/ripple";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {CardModule} from "primeng/card";
 
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule,ChartModule, PieChartComponent],
-  providers: [
-
-  ],
+    imports: [BrowserModule, AppRoutingModule, HttpClientModule, ChartModule, ButtonDirective, Ripple, BrowserModule,
+        BrowserAnimationsModule, CardModule,],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {

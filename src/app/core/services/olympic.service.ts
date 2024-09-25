@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {BehaviorSubject, filter, Observable} from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import {Olympic} from "../models/Olympic";
+
+
 
 @Injectable({
   providedIn: 'root',
@@ -9,11 +12,10 @@ import { catchError, tap } from 'rxjs/operators';
 export class OlympicService {
   private olympicUrl = './assets/mock/olympic.json';
   private olympics$ = new BehaviorSubject<any>(undefined);
-
   constructor(private http: HttpClient) {}
 
   loadInitialData() {
-    return this.http.get<any>(this.olympicUrl).pipe(
+    return this.http.get<Olympic>(this.olympicUrl).pipe(
       tap((value) => this.olympics$.next(value)),
       catchError((error, caught) => {
         // TODO: improve error handling
@@ -26,7 +28,9 @@ export class OlympicService {
     );
   }
 
-  getOlympics() {
-    return this.olympics$.asObservable();
+  getOlympics() :Observable<Olympic[]> {
+    return this.olympics$;
   }
+
+
 }
