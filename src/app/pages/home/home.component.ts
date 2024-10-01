@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {map, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {OlympicService} from 'src/app/core/services/olympic.service';
 import {Olympic} from "../../core/models/Olympic";
 import {Router} from "@angular/router";
@@ -77,10 +77,6 @@ export class HomeComponent implements OnInit {
         }
       }
     };
-  }
-
-  navigateToCountry() {
-    this.router.navigateByUrl('detail');
   }
 
   onChartClick(e: any) {
