@@ -38,6 +38,12 @@ export class HomeComponent implements OnInit {
     const SPAIN = '#B8CBE7';
     const USA = '#89A1DB';
     const FRANCE = '#9780A1';
+
+    const OPPOSIT_ITALY = '#609590';
+    const OPPOSIT_GERMANY = '#3d7964';
+    const OPPOSIT_SPAIN = '#e7d4b8';
+    const OPPOSIT_USA = '#dbc389';
+    const OPPOSIT_FRANCE = '#8aa180';
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
 
@@ -57,7 +63,7 @@ export class HomeComponent implements OnInit {
           {
             data: datas,
             backgroundColor: [ITALY, SPAIN, USA, GERMANY, FRANCE],
-            hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
+            hoverBackgroundColor: [OPPOSIT_ITALY, OPPOSIT_SPAIN, OPPOSIT_USA,OPPOSIT_GERMANY,OPPOSIT_FRANCE ]
           }
         ]
       }
