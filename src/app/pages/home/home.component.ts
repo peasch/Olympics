@@ -38,32 +38,37 @@ export class HomeComponent implements OnInit {
     const SPAIN = '#B8CBE7';
     const USA = '#89A1DB';
     const FRANCE = '#9780A1';
-
+// Couleurs opposées des pays dans le Pie Chart en hover
     const OPPOSIT_ITALY = '#609590';
     const OPPOSIT_GERMANY = '#3d7964';
     const OPPOSIT_SPAIN = '#e7d4b8';
     const OPPOSIT_USA = '#dbc389';
     const OPPOSIT_FRANCE = '#8aa180';
+
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
 
+    // on va récupérer et additionner pour chaque JO le nombre d'athlètes
     this.olympicService.getOlympics().subscribe((response: Olympic[]) => {
       this.olympics = response;
       const labels = response?.map(olympic => olympic.country);
       const datas = response?.map((olympic: Olympic) =>
         olympic.participations.reduce((acc: number, participation: Participation) => acc + participation.medalsCount, 0));
 
-      this.uniqueYears = Array.from(new Set(
-        response?.map((olympic: Olympic) =>
-          olympic.participations.map((i: Participation) => i.year) ?? []).flat()));
+      //en une ligne on récupère les valeurs distinctes des années de participations, dans chacun des pays
+      this.uniqueYears = Array.from(
+        new Set(
+          response?.map((olympic: Olympic) =>
+            olympic.participations.map((i: Participation) => i.year) ?? []).flat()));
 
+      // on mets les valeurs dans le pieCharts
       this.data = {
         labels: labels,
         datasets: [
           {
             data: datas,
             backgroundColor: [ITALY, SPAIN, USA, GERMANY, FRANCE],
-            hoverBackgroundColor: [OPPOSIT_ITALY, OPPOSIT_SPAIN, OPPOSIT_USA,OPPOSIT_GERMANY,OPPOSIT_FRANCE ]
+            hoverBackgroundColor: [OPPOSIT_ITALY, OPPOSIT_SPAIN, OPPOSIT_USA, OPPOSIT_GERMANY, OPPOSIT_FRANCE]
           }
         ]
       }
@@ -73,7 +78,7 @@ export class HomeComponent implements OnInit {
     this.options = {
 
       maintainAspectRatio: false,
-      aspectRatio: 0.5,
+      aspectRatio:1,
       plugins: {
         legend: {
           labels: {

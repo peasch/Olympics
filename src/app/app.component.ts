@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
               private primengConfig :PrimeNGConfig) {}
 
   ngOnInit(): void {
+    // on ne demande qu'une valeur à l'observable
     this.olympicService.loadInitialData().pipe(take(1)).subscribe();
     this.primengConfig.ripple = true;
   }

@@ -87,7 +87,7 @@ export class DetailsComponent implements OnInit {
 
     this.options = {
       maintainAspectRatio: false,
-      aspectRatio: 1.0,
+      aspectRatio: 1.2,
       plugins: {
         legend: {
           labels: {
